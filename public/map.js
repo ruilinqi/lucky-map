@@ -1,5 +1,5 @@
 // Fetch the Mapbox access token from the server
-fetch('/mapbox-token')
+fetch('/.netlify/functions/get-mapbox-token')
   .then(response => response.json())
   .then(data => {
     mapboxgl.accessToken = data.accessToken;
