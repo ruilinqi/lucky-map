@@ -2,6 +2,9 @@
 fetch('/.netlify/functions/get-mapbox-token')
   .then(response => response.json())
   .then(data => {
+    if (!data.accessToken) {
+      throw new Error("Mapbox token not found");
+    }
     mapboxgl.accessToken = data.accessToken;
 
     const map = new mapboxgl.Map({
